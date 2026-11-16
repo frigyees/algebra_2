@@ -15,3 +15,8 @@
 #include "src/12-261016.typ"
 #include "src/13-261019.typ"
 #include "src/14-261026.typ"
+#include "src/15-261102.typ"
+#include "src/16-261106.typ"
+#include "src/17-261109.typ"
+#include "src/18-261113.typ"
+#include "src/19-261116.typ"

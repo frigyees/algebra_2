@@ -6,3 +6,5 @@
 #let tr = math.op("tr")
 #let nrm = math.op("N")
 #let Gal = math.op("Gal")
+#let Hom = math.op("Hom")
+#let Bil = math.op("Bil")
