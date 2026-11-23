@@ -11,7 +11,6 @@
 // DROPPED
 //   [p4] decorative sketch in the margin
 // CORRECTIONS
-//   [p1] second iso proof: "h o pi_N epimorphism => h epimorphism" justified via Lemma 28.7 (b), not commutativity alone
 //   [p2] "V := R^2 (x) R^2" with R both the reals and the ring -> RR^2 (x) RR^2
 //   [p4] tensor product defined for arbitrary R -> R commutative (otherwise a(x (x) y) is not defined and M (x)_R N is not an R-module)
 //   [p4] Z (x) Z/2Z: claim 2 (x) [1]_2 != 0 in 2Z (x) Z/2Z stated without reason -> justified
@@ -49,7 +48,7 @@
   $N slash P = pi_P^(arrow.r)(N) = {[u]_P : u in N}$ is a submodule of $M slash P$ by @thm-img-preimg. Apply @lem-induced to $f = pi_P: M -> M slash P$ with $A = N$ and $B = N slash P$. Condition 1) holds, since $pi_P^(arrow.r)(N) = N slash P$. So there is a unique $R$-morphism $h: M slash N -> (M slash P) slash (N slash P)$ with $h compose pi_N = pi compose pi_P$.
 
   // [p2]
-  By @lem-induced (b), $h$ is an epimorphism, since $N slash P + im pi_P = N slash P + M slash P = M slash P$. By @lem-induced (a), $h$ is a monomorphism, since by @cor-img-preimg and $P subset.eq N$,
+  By commutativity, $h compose pi_N = pi compose pi_P$, which is an epimorphism by @prop-morph-props 2); hence $h$ is an epimorphism by @prop-morph-props 4). By @lem-induced (a), $h$ is a monomorphism, since by @cor-img-preimg and $P subset.eq N$,
   $ pi_P^(arrow.l)(N slash P) = pi_P^(arrow.l)(pi_P^(arrow.r)(N)) = N + ker pi_P = N + P = N. $
   Hence $h$ is an isomorphism.
 ]
@@ -163,7 +162,7 @@ Throughout this section $R$ is a commutative ring with identity. The aim is to t
 
 #definition(title: [Basis, free module])[
   Let $M$ be an $R$-module and $S subset.eq M$. The set $S$ is _linearly independent_ if for any distinct $s_1, dots, s_n in S$ and $r_1, dots, r_n in R$, $sum_(i = 1)^n r_i s_i = 0$ implies $r_1 = dots.c = r_n = 0$. It is a _basis_ of $M$ if it generates $M$, that is, $chevron.l S chevron.r = M$, and it is linearly independent. An $R$-module is _free_ if it has a basis. The _rank_ of a free $R$-module is the cardinality of a basis.
-]
+] <def-basis>
 
 #remark(cited: true)[
   If $R$ is commutative and nonzero, any two bases of a free $R$-module have the same cardinality, so the rank is well defined.
@@ -175,4 +174,4 @@ Throughout this section $R$ is a commutative ring with identity. The aim is to t
 
 #theorem(cited: true)[
   Every vector space over a field $K$ has a basis; in particular it is a free $K$-module.
-]
+] <thm-vs-basis>

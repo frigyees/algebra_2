@@ -61,7 +61,7 @@
     dx: 1.7cm,
   )
   commutes and has exact rows. If $alpha$ and $gamma$ are isomorphisms, then so is $beta$.
-]
+] <cor-short-five>
 
 #proof[
   Apply @thm-five-lemma with the zero maps $0 -> 0$ as the outer vertical morphisms; they are isomorphisms.

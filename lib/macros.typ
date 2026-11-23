@@ -8,3 +8,4 @@
 #let Gal = math.op("Gal")
 #let Hom = math.op("Hom")
 #let Bil = math.op("Bil")
+#let GL = math.op("GL")
