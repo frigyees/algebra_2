@@ -115,7 +115,7 @@ Throughout this section $R$ is a commutative ring with identity. The aim is to t
   // [p3]
   Let $P$ be an $R$-module and $f: M times N -> P$ an $R$-bilinear map. By the universal property of free modules (@prop-free-univ), $f$ extends to a unique $R$-morphism $overline(f): F -> P$ with $overline(f)((x, y)) = f(x, y)$. Then $overline(f)$ maps the generators of $D$, hence all of $D$, to $0$. For instance,
   $ overline(f)((x + x', y) - (x, y) - (x', y)) = f(x + x', y) - f(x, y) - f(x', y) = 0 $
-  by bilinearity of $f$, and the same holds for the other three forms. So $D subset.eq ker overline(f)$. Since $ker pi_D = D$, @thm-factor-epi gives a unique $R$-morphism $f': T = F slash D -> P$ with $f' compose pi_D = overline(f)$, that is,
+  by bilinearity of $f$, and the same holds for the other three forms. So $D subset.eq ker overline(f)$. Define $f': T -> P$ by $f'(u + D) = overline(f)(u)$ for $u in F$. This is well defined: if $u + D = u' + D$, then $u - u' in D$, so $overline(f)(u) - overline(f)(u') = overline(f)(u - u') = 0$. In particular, if $x times.o y = x' times.o y'$, then $(x, y) - (x', y') in D$ and $f(x, y) = f(x', y')$. Since $overline(f)$ is an $R$-morphism, so is $f'$, and
   $ f'(x times.o y) = overline(f)((x, y)) = f(x, y). $
   Hence $f' compose g = f$.
 

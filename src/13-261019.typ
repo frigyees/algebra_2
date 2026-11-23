@@ -6,15 +6,15 @@
 // DROPPED
 //   [p1] [p2] crossed-out marginal drawings
 // CORRECTIONS
-//   [p1] lemma (1): "if F and E are both radical extensions of K, then so are FE|F, FE|E" -> FE|F is a root extension whenever E|K is, for any F
 //   [p1] lemma (3) proof: normal closure "is the completion of these root extensions" -> compositum of the conjugates of F
 //   [p2] main theorem: K_(i+1) = K_i(m_i-th root of a_i), a_i in K -> a_i in K_i
 //   [p2] example: f(3) = 180 -> 189; "at most 3 real roots" -> exactly 3 (intermediate value theorem gives at least 3)
 // READINGS
 //   [p2] (<=): Gal(K_i|K_(i-1)) read as G_(i-1)/G_i
-// SCOPE
-//   [p1] Kummer: char K not dividing n -> char K = 0; the notes' "x^n - a separable, thus F|K Galois" is proved here only in characteristic 0, the only case used
+// CITED
+//   [p1] Kummer (1): "x^n - a separable, thus F|K Galois" kept with the hypothesis char K not dividing n; the splitting field of a separable polynomial is Galois is cited
 // ADDITIONS (A filled in, B supplied proof, C cited)
+//   [p1] A: lemma (1) generalized from radical E, F to root extension E and arbitrary F (the proof of (2) needs it)
 //   [p1] A: radical extension K(b), b^n = a; fixed algebraic closure; definition of solvable by radicals made precise
 //   [p1] A: Kummer (1): a = 0 case, distinctness of roots, Galois via Theorem 17.21 and Lemma 17.7; (2): sigma(rho) computed, rho^n in K via Theorem 18.8
 //   [p1] B: Dedekind's lemma on independence of automorphisms
@@ -60,7 +60,7 @@ Throughout, all fields considered over a field $KK$ lie in a fixed algebraic clo
 ]
 
 #theorem(title: [Kummer])[
-  Let $n in NN$, let $"char" KK = 0$, and assume that $KK$ contains the $n$-th roots of unity.
+  Let $n in NN$, let $KK$ be a field with $"char" KK divides.not n$, and assume that $KK$ contains the $n$-th roots of unity.
   + For $a in KK$ let $FF = KK(root(n, a))$. Then $FF | KK$ is cyclic of degree $d$ for some $d divides n$.
   + If $FF | KK$ is cyclic of degree $n$, then $FF = KK(root(n, a))$ for some $a in KK$.
 ] <thm-kummer>
@@ -68,7 +68,7 @@ Throughout, all fields considered over a field $KK$ lie in a fixed algebraic clo
 #proof[
   By @prop-mu-n, $KK$ contains a primitive $n$-th root of unity $xi$, and the $n$-th roots of unity are $xi^i$, $0 <= i <= n - 1$, pairwise distinct.
 
-  1) If $a = 0$, then $FF = KK$ and the claim holds with $d = 1$. Let $a != 0$ and $b = root(n, a)$, so $b != 0$. The roots of $x^n - a$ are the $n$ distinct elements $b xi^i$, $0 <= i <= n - 1$, all in $FF$. So $FF$ is the splitting field of $x^n - a$ over $KK$, hence normal (@thm-normal-split). Since $"char" KK = 0$, $FF | KK$ is separable by @lem-sep-deriv, so it is Galois, and $|Gal(FF | KK)| = [FF : KK]$ by @prop-gal-order. Each $sigma in Gal(FF | KK)$ is determined by $sigma(b) = b xi^(i_sigma)$, with $i_sigma in ZZ_n$, by @thm-perm-roots. The map $Gal(FF | KK) -> ZZ_n$, $sigma mapsto i_sigma$, is injective, and it is a homomorphism: since $xi in KK$ is fixed,
+  1) If $a = 0$, then $FF = KK$ and the claim holds with $d = 1$. Let $a != 0$ and $b = root(n, a)$, so $b != 0$. The roots of $x^n - a$ are the $n$ distinct elements $b xi^i$, $0 <= i <= n - 1$, all in $FF$. So $FF$ is the splitting field of $x^n - a$ over $KK$, and $x^n - a$ is separable. The splitting field of a separable polynomial is a Galois extension (cited; for $"char" KK = 0$ it follows from @thm-normal-split and @lem-sep-deriv, which is the only case used below). So $FF | KK$ is Galois, and $|Gal(FF | KK)| = [FF : KK]$ by @prop-gal-order. Each $sigma in Gal(FF | KK)$ is determined by $sigma(b) = b xi^(i_sigma)$, with $i_sigma in ZZ_n$, by @thm-perm-roots. The map $Gal(FF | KK) -> ZZ_n$, $sigma mapsto i_sigma$, is injective, and it is a homomorphism: since $xi in KK$ is fixed,
   $ (tau sigma)(b) = tau(b xi^(i_sigma)) = tau(b) xi^(i_sigma) = b xi^(i_tau + i_sigma). $
   The map need not be surjective. Hence $Gal(FF | KK)$ is isomorphic to a subgroup of $ZZ_n$, that is, cyclic of some order $d divides n$, and $[FF : KK] = d$.
 

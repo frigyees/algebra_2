@@ -17,7 +17,7 @@
 //   ex. 1-6 statements taken from the printed problem sheet (scans/14-261026-sheet.png); ex. 3 still dropped as a repeat
 // ADDITIONS (A filled in)
 //   [p1] A: Eisenstein p = 2; Rolle via the real zeros of f'; sign changes located; complex conjugation in G; Cauchy, Lemma 24.13
-//   [p1] A: ex. 1: residues mod 5, uniqueness by Hensel, check f(13) = 76 * 25
+//   [p1] A: ex. 1: residues mod 5, uniqueness by Hensel, check f(13) = 76 * 25 (the lifting step keeps the lecture's binomial expansion)
 //   [p1] A: ex. 2: reciprocity and Legendre properties cited; p > 3 ensures p not 2, 3
 //   [p2] A: ex. 4: sqrt 5 not in Q(sqrt 3); all four maps exist; group table; ex. 5: ind_2 3, ind_2 8 read from the table; check
 //   [p2] A: ex. 5: 2 is the smallest positive primitive root (1 has order 1)
@@ -51,8 +51,8 @@
 #solution[
   Let $f(x) = x^3 - 2 x^2 + 3 x + 2$. Modulo $5$, the values $f(0), dots, f(4)$ are $2, 4, 3, 0, 1$, so $x equiv 3 pmod(5)$ is the only solution. Since $f'(x) = 3 x^2 - 4 x + 3$ and $f'(3) = 27 - 12 + 3 = 18 equiv.not 0 pmod(5)$, @thm-hensel gives exactly one solution modulo $25$.
 
-  Write $x = 5 t + 3$. By @lem-hensel,
-  $ f(5 t + 3) equiv f(3) + 5 t f'(3) = 20 + 90 t pmod(25), $
+  Write $x = 5 t + 3$. Expanding and dropping the terms divisible by $25$,
+  $ (5 t + 3)^3 - 2 (5 t + 3)^2 + 3 (5 t + 3) + 2 equiv 3 dot 5 t dot 9 + 27 - 2 dot 2 dot 5 t dot 3 - 2 dot 3^2 + 3 dot 5 t + 11 = 90 t + 20 pmod(25), $
   so $90 t + 20 equiv 0 pmod(25)$, that is, $18 t + 4 equiv 0 pmod(5)$, or $3 t + 4 equiv 0 pmod(5)$. Multiplying by $2$ gives $6 t + 8 equiv t + 3 equiv 0 pmod(5)$, so $t equiv 2 pmod(5)$ and
   $ x equiv 13 pmod(25). $
   Indeed $f(13) = 1900 = 76 dot 25$.

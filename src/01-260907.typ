@@ -9,7 +9,6 @@
 //   [p3] "no effective algorithm is known" -> no polynomial-time classical algorithm is known
 // ADDITIONS (A filled in, B supplied proof, C cited)
 //   [p1] A: definition of order; recalled phi formula, Euler-Fermat, Lagrange
-//   [p1] A: primitive root defined for a in Z (source: Z^+), as all later statements use g in Z
 //   [p1] A: d >= 0 (not d > 0) in the order proof; m >= 2 and alpha >= 1 in the existence theorem;
 //        existence hypothesis in the counting theorem; n >= 3 in the phi estimate; c = c(eps) in Burgess
 //   [p1] A: lemma on the order of a power; proofs of the mod-12 remark, the counting theorem, the checking procedure
@@ -55,7 +54,7 @@
 ]
 
 #definition(title: [Primitive root])[
-  Let $m in NN$. An integer $a in ZZ$ with $(a, m) = 1$ is a _primitive root_ modulo $m$ if $ord(m, a) = phi(m)$.
+  Let $m in NN$. An integer $a in NN$ with $(a, m) = 1$ is a _primitive root_ modulo $m$ if $ord(m, a) = phi(m)$.
 ]
 
 #lemma[
@@ -115,7 +114,7 @@
 ]
 
 #procedure(title: [Checking primitive roots])[
-  Let $p$ be a prime and $g in ZZ$ with $p divides.not g$.
+  Let $p$ be a prime and $g in NN$ with $p divides.not g$.
   + Compute the prime divisors $q_1, dots, q_s$ of $p - 1$.
   + Check that $g^((p - 1) slash q_i) equiv.not 1 pmod(p)$ for every $1 <= i <= s$.
   Then $g$ is a primitive root modulo $p$ if and only if every check in step 2 succeeds.
@@ -147,7 +146,7 @@
 ]
 
 #theorem[
-  Let $m in NN$ and $g in ZZ$ with $(g, m) = 1$. Then $g$ is a primitive root modulo $m$ if and only if $1, g, g^2, dots, g^(phi(m) - 1)$ form a reduced residue system modulo $m$.
+  Let $m in NN$ and $g in NN$ with $(g, m) = 1$. Then $g$ is a primitive root modulo $m$ if and only if $1, g, g^2, dots, g^(phi(m) - 1)$ form a reduced residue system modulo $m$.
 ] <thm-rrs>
 
 #proof[

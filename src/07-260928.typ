@@ -5,7 +5,6 @@
 // Scan pages: p1 = IMG_0705, p2 = IMG_0706, p3 = IMG_0707.
 // HEADINGS sections 15, 16 coined
 // DROPPED
-//   [p1] ex. 2: digit-by-digit proof that a_0 != 0 implies a unit; repeats Proposition 8.10
 //   [p3] doodles
 // CORRECTIONS
 //   [p1] ex. 1c: 1/2 = 2 + 3 + 3^3 + ... -> 2 + 3 + 3^2 + 3^3 + ...; 1/6 = 2*3^-1 + 1 + 3^2 + ... -> 2*3^-1 + 1 + 3 + 3^2 + ... (final answer changed)
@@ -17,7 +16,7 @@
 // ADDITIONS (A filled in, C cited)
 //   [p1] A: geometric series lemma; v_p on Q_p; truncation framing of the congruence method
 //   [p1] A: 2/3 completed via ex. 3; divergence of sum (-1)^n; grouping of 2 sum (-3)^n justified
-//   [p1] A: ex. 2 reduced to Proposition 8.10 plus |a|_p = 1
+//   [p1] A: ex. 2: the digit-by-digit construction written out
 //   [p1] A: ex. 3 hypotheses a != 0, a_(-m) != 0; induction completing the digit process
 //   [p2] A: counting argument in Legendre's formula; limit and x^2 = 6 in ex. 5
 //   [p2] A: statement of the unit characterization; hypothesis x != 0 in ex. 7
@@ -75,7 +74,11 @@
 ] <ex-units>
 
 #solution[
-  The first equivalence is part of @prop-qp-field. For $a in ZZ_p$ we have $v_p (a) >= 0$, and $v_p (a) = 0$ holds if and only if $a_0 != 0$. Hence $a_0 != 0$ if and only if $|a|_p = p^0 = 1$.
+  If there is $b = sum_(n >= 0) b_n p^n in ZZ_p$ with $a b = 1$, then comparing first digits, $a_0 b_0 equiv 1 pmod(p)$, so $a_0 != 0$.
+
+  Conversely, let $a_0 != 0$. Since $0 < a_0 <= p - 1$, there is $b_0$ with $0 < b_0 <= p - 1$ and $a_0 b_0 equiv 1 pmod(p)$. The next digit $b_1$ must satisfy $a_1 b_0 + a_0 b_1 + t equiv 0 pmod(p)$, where $a_0 b_0 = 1 + t p$, which determines $b_1$ uniquely as $a_0$ is invertible modulo $p$. Continuing digit by digit, as in Hensel lifting (@thm-hensel applied to $f(x) = a_k x - 1$ modulo $p^k$), one constructs $b in ZZ_p$ with $a b = 1$. This is also part of @prop-qp-field.
+
+  For $a in ZZ_p$ we have $v_p (a) >= 0$, and $v_p (a) = 0$ holds if and only if $a_0 != 0$. Hence $a_0 != 0$ if and only if $|a|_p = p^0 = 1$.
 ]
 
 #example[

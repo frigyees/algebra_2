@@ -4,8 +4,8 @@
 
 // 15-261102 · submodules, generated submodules, modular law, morphisms, images and preimages, maps between sets
 // HEADINGS section 26 coined; subsections "Morphisms" and "Diagram completion" from source ("Morphisms", "Diagram"), "Submodules" coined
-// GAP
-//   modules, rings and algebras are used but never defined in the notes; a lecture introducing them is probably missing
+// RECALL
+//   modules, rings and algebras are used but not defined in the notes; no lecture is missing (the preceding session was the midterm); the Recall block states the definitions
 // DROPPED
 //   [p2] marginal sketch next to the image/preimage proposition
 // CORRECTIONS
