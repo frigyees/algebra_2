@@ -25,7 +25,7 @@
 //   FIGURES diagrams redrawn with lib/diagram.typ
 
 // [p1]
-#theorem(title: [Five lemma])[
+#theorem(status: "C", title: [Five lemma])[
   Suppose that the diagram of $R$-modules and $R$-morphisms
   #cd(
     ((0, 0, $A$), (0, 1, $B$), (0, 2, $C$), (0, 3, $D$), (0, 4, $E$), (1, 0, $A'$), (1, 1, $B'$), (1, 2, $C'$), (1, 3, $D'$), (1, 4, $E'$)),
@@ -43,11 +43,11 @@
   is commutative with exact rows. If $alpha_1, alpha_2, alpha_4$ and $alpha_5$ are isomorphisms, then so is $alpha_3$.
 ] <thm-five-lemma>
 
-#proof[
+#proof(status: "S")[
   @thm-four-lemma 2), applied to the squares between $A, B, C, D$, with $alpha_1$ an epimorphism and $alpha_2, alpha_4$ monomorphisms, shows that $alpha_3$ is a monomorphism. @thm-four-lemma 1), applied to the squares between $B, C, D, E$, with $alpha_2, alpha_4$ epimorphisms and $alpha_5$ a monomorphism, shows that $alpha_3$ is an epimorphism.
 ]
 
-#corollary(title: [Short five lemma])[
+#corollary(status: "S", title: [Short five lemma])[
   Suppose that the diagram of $R$-modules and $R$-morphisms
   #cd(
     ((0, 0, $0$), (0, 1, $A$), (0, 2, $B$), (0, 3, $C$), (0, 4, $0$), (1, 0, $0$), (1, 1, $A'$), (1, 2, $B'$), (1, 3, $C'$), (1, 4, $0$)),
@@ -63,7 +63,7 @@
   commutes and has exact rows. If $alpha$ and $gamma$ are isomorphisms, then so is $beta$.
 ] <cor-short-five>
 
-#proof[
+#proof(status: "A")[
   Apply @thm-five-lemma with the zero maps $0 -> 0$ as the outer vertical morphisms; they are isomorphisms.
 ]
 
@@ -71,15 +71,17 @@
 
 Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. We write $x equiv y space (E)$ if $x$ and $y$ are related, $[x]_E$ for the class of $x$, and $M slash E$ for the set of equivalence classes of $M$ with respect to $E$. The _natural surjection_ is $pi_E: M -> M slash E$, $x mapsto [x]_E$.
 
-#theorem[
+#theorem(status: "S")[
   Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. The following are equivalent:
   + there are a unique addition $([x]_E, [y]_E) mapsto [x]_E + [y]_E$ and a unique $R$-action $(lambda, [x]_E) mapsto lambda [x]_E$ such that $M slash E$ is an $R$-module and $pi_E$ is an $R$-epimorphism;
   + $E$ is _compatible_ with the structure of $M$: if $x equiv a space (E)$ and $y equiv b space (E)$, then $x + y equiv a + b space (E)$, and if $x equiv a space (E)$ and $lambda in R$, then $lambda x equiv lambda a space (E)$;
   + there is a submodule $M_E$ of $M$ such that $x equiv y space (E)$ if and only if $x - y in M_E$.
 ] <thm-quotient>
 
-#proof[
+#proof(status: "S+")[
+  #extra[
   1) $=>$ 2): if $x equiv a$ and $y equiv b$, then $pi_E (x + y) = pi_E (x) + pi_E (y) = pi_E (a) + pi_E (b) = pi_E (a + b)$, so $x + y equiv a + b$. Similarly $pi_E (lambda x) = lambda pi_E (x) = lambda pi_E (a) = pi_E (lambda a)$.
+  ]
 
   2) $=>$ 1): consider the diagrams
   #cd(
@@ -102,27 +104,27 @@ Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. We write $x equ
 ]
 
 // [p2]
-#definition(title: [Quotient module])[
+#definition(status: "C", title: [Quotient module])[
   If $M$ is an $R$-module and $E$ a compatible equivalence relation on $M$, the $R$-module $M slash E$ of @thm-quotient is the _quotient module_ of $M$ by $E$, and $pi_E$ is the _natural epimorphism_.
 ]
 
-#proposition[
+#proposition(status: "S")[
   The map $E mapsto [0]_E$ is a bijection from the set of compatible equivalence relations on $M$ onto the set of submodules of $M$.
 ] <prop-compat-submod>
 
-#proof[
+#proof(status: "S")[
   By @thm-quotient, $[0]_E$ is a submodule, and $x equiv y space (E)$ if and only if $x - y in [0]_E$. Hence $E$ is determined by $[0]_E$, and the map is injective: if $[0]_E = [0]_F$, then $x equiv y space (E)$ if and only if $x equiv y space (F)$. It is surjective: if $N$ is a submodule of $M$, the relation $x equiv y space (F) <=> x - y in N$ is an equivalence relation, compatible by @thm-quotient 3) $=>$ 2), and $[0]_F = {x : x - 0 in N} = N$.
 ]
 
-#remark[
+#remark(status: "S")[
   For a submodule $N$ of $M$ we write $M slash N$ for the quotient by the corresponding compatible relation, and $pi_N$ for the natural epimorphism. The class $[x]_N$ is the coset $x + N = {x + n : n in N}$: indeed $y in [x]_N$ if and only if $y - x in N$, if and only if $y = x + n$ for some $n in N$. Moreover $ker pi_N = [0]_N = N$.
 ]
 
-#theorem(title: [Correspondence theorem])[
+#theorem(status: "S", title: [Correspondence theorem])[
   Let $N$ be a submodule of an $R$-module $M$. Then $A mapsto A slash N = {[a]_N : a in A}$ is an inclusion-preserving bijection from the set of submodules of $M$ that contain $N$ onto the set of submodules of $M slash N$, and its inverse $P mapsto pi_N^(arrow.l)(P)$ also preserves inclusion.
 ] <thm-correspondence>
 
-#proof[
+#proof(status: "C")[
   Let $phi(A) = A slash N = pi_N^(arrow.r)(A)$, a submodule of $M slash N$ by @thm-img-preimg. If $N subset.eq A$, then by @cor-img-preimg
   $ pi_N^(arrow.l)(phi(A)) = pi_N^(arrow.l)(pi_N^(arrow.r)(A)) = A + ker pi_N = A + N = A. $
   So $phi(A) = phi(B)$ implies $A = B$, and $phi$ is injective. If $P$ is a submodule of $M slash N$, then $pi_N^(arrow.l)(P)$ is a submodule of $M$ (@thm-img-preimg) containing $pi_N^(arrow.l)({0}) = N$, and by @cor-img-preimg
@@ -130,11 +132,11 @@ Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. We write $x equ
   So $phi$ is surjective with inverse $P mapsto pi_N^(arrow.l)(P)$. Both images and preimages preserve inclusion.
 ]
 
-#corollary[
+#corollary(status: "S")[
   Every submodule of $M slash N$ is of the form $A slash N$, where $A$ is a submodule of $M$ that contains $N$.
 ]
 
-#lemma[
+#lemma(status: "C")[
   Let $M, N$ be $R$-modules and $f: M -> N$ an $R$-morphism. Let $A$ be a submodule of $M$ and $B$ a submodule of $N$. The following are equivalent:
   + $f^(arrow.r)(A) subset.eq B$;
   + there is a unique $R$-morphism $f_*: M slash A -> N slash B$ such that the diagram
@@ -153,7 +155,7 @@ Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. We write $x equ
   #enum(numbering: "(a)", [a monomorphism if and only if $A = f^(arrow.l)(B)$;], [an epimorphism if and only if $B + im f = N$.])
 ] <lem-induced>
 
-#proof[
+#proof(status: "C")[
   $pi_A$ is an epimorphism, so by @thm-factor-epi applied to $pi_A$ and $pi_B compose f$, an $R$-morphism $f_*$ with $f_* compose pi_A = pi_B compose f$ exists, and is then unique, if and only if $ker pi_A subset.eq ker(pi_B compose f)$. Here
   $ x in ker pi_A <=> [x]_A = [0]_A <=> x in A, quad x in ker(pi_B compose f) <=> [f(x)]_B = [0]_B <=> f(x) in B. $
   So the condition reads: $x in A$ implies $f(x) in B$, which is 1).
@@ -167,7 +169,7 @@ Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. We write $x equ
 ]
 
 // [p3]
-#theorem(title: [First isomorphism theorem])[
+#theorem(status: "S", title: [First isomorphism theorem])[
   Let $f: M -> N$ be an $R$-morphism and $f^+: M -> im f$, $x mapsto f(x)$. Then there is a unique $R$-isomorphism $lambda: M slash ker f -> im f$ such that the diagram
   #cd(
     ((0, 0, $M$), (0, 1, $im f$), (1, 0, $M slash ker f$)),
@@ -180,6 +182,6 @@ Let $M$ be an $R$-module and $E$ an equivalence relation on $M$. We write $x equ
   commutes, that is, $lambda compose pi_(ker f) = f^+$.
 ] <thm-first-iso>
 
-#proof[
+#proof(status: "S+")[
   Apply @lem-induced to $f^+: M -> im f$ with $A = ker f$ and $B = {0}$. Here $N slash {0}$ is identified with $N$ through the isomorphism $pi_({0})$, whose kernel is ${0}$. Condition 1) holds, since $(f^+)^(arrow.r)(ker f) = {0}$. So there is a unique $R$-morphism $lambda$ with $lambda compose pi_(ker f) = f^+$. It is a monomorphism by (a), since $ker f = f^(arrow.l)({0})$, and an epimorphism by (b), since $f^+$ is surjective, so ${0} + im f^+ = im f$. Hence $lambda$ is an isomorphism.
 ]

@@ -15,11 +15,11 @@
 //   [p3] A: Theorem 7.9 cited in the example; squarefree reduction of the sum
 
 // [p1]
-#example[
+#example(status: "S")[
   Solve $x^3 + 2 x - 22 equiv 0 pmod(125)$.
 ]
 
-#solution[
+#solution(status: "C")[
   Let $f(x) = x^3 + 2 x - 22$, so $f'(x) = 3 x^2 + 2$ and $125 = 5^3$.
 
   *Modulo 5.* The values of $f(0), dots, f(4)$ modulo $5$ are $3, 1, 0, 1, 0$, so $x equiv 2$ or $x equiv 4 equiv -1 pmod(5)$.
@@ -39,99 +39,99 @@
 
 = Arithmetic functions
 
-#definition(title: [Arithmetic function])[
+#definition(status: "S", title: [Arithmetic function])[
   An _arithmetic function_ is a function $f: NN -> CC$. It is _multiplicative_ if $f(a b) = f(a) f(b)$ for all $a, b in NN$ with $(a, b) = 1$, and _additive_ if $f(a b) = f(a) + f(b)$ for all $a, b in NN$ with $(a, b) = 1$.
 ]
 
-#example[
+#example(status: "S+")[
   Let $d(n)$, also written $tau(n)$, be the number of positive divisors of $n$. If $n = p_1^(alpha_1) dots.c p_r^(alpha_r)$ with distinct primes $p_i$, then $d(n) = product_(i = 1)^r (1 + alpha_i)$, because the divisors of $n$ are exactly the products $p_1^(beta_1) dots.c p_r^(beta_r)$ with $0 <= beta_i <= alpha_i$. Hence $d$ is multiplicative: for $(m, n) = 1$ the prime divisors of $m$ and $n$ are disjoint, and $d(m n) = d(m) d(n)$.
 ]
 
-#example[
+#example(status: "C")[
   Let $sigma(n)$ be the sum of the positive divisors of $n$; for instance $sigma(6) = 1 + 2 + 3 + 6 = 12$. For $n = product_(i = 1)^r p_i^(alpha_i)$ as above, summing over the divisors described in the previous example gives
   $ sigma(n) = product_(i = 1)^r sum_(j = 0)^(alpha_i) p_i^j. $
   As for $d$, this formula shows that $sigma$ is multiplicative.
 ]
 
-#example[
+#example(status: "S")[
   Euler's function $phi$ is multiplicative (@rem-recall-phi). Let $omega(n)$ be the number of distinct prime divisors of $n$; then $omega$ is additive. Let $Omega(n)$ be the number of prime divisors of $n$ counted with multiplicity, so $Omega(n) = sum_(i = 1)^r alpha_i$ for $n$ as above; then $Omega$ is additive.
 ]
 
-#proposition[
+#proposition(status: "S")[
   + If $f$ is multiplicative and not identically $0$, then $f(1) = 1$.
   + If $f$ is additive, then $f(1) = 0$.
 ]
 
-#proof[
+#proof(status: "S")[
   1) Choose $a$ with $f(a) != 0$. Since $(1, a) = 1$, $f(a) = f(1 dot a) = f(1) f(a)$, so $f(1) = 1$.
 
   2) Since $(1, 1) = 1$, $f(1) = f(1 dot 1) = f(1) + f(1)$, so $f(1) = 0$.
 ]
 
-#definition(title: [Summation function])[
+#definition(status: "S", title: [Summation function])[
   Let $f: NN -> CC$ be an arithmetic function. Its _summation function_ is $f^+ (n) = F(n) = sum_(d divides n) f(d)$, where $d$ runs over the positive divisors of $n$.
 ]
 
 // [p2]
-#lemma[
+#lemma(status: "S")[
   Let $a, b in NN$ with $(a, b) = 1$ and let $d divides a b$. Then there are unique $d_1, d_2 in NN$ with $d_1 divides a$, $d_2 divides b$ and $d = d_1 d_2$. Hence $(d_1, d_2) mapsto d_1 d_2$ is a bijection from the pairs of positive divisors of $a$ and $b$ onto the positive divisors of $a b$.
 ] <lem-divisor-split>
 
-#proof[
+#proof(status: "A")[
   Put $d_1 = (d, a)$ and $d_2 = (d, b)$. They are coprime and both divide $d$, so $d_1 d_2 divides d$. Conversely, let $q^e$ be the exact power of a prime $q$ dividing $d$. Since $q$ divides at most one of $a, b$, say $a$, and $q^e divides a b$, we get $q^e divides a$ and so $q^e divides d_1$. Hence $d divides d_1 d_2$, and $d = d_1 d_2$. If also $d = e_1 e_2$ with $e_1 divides a$ and $e_2 divides b$, then $e_1 divides (d, a) = d_1$ and $e_2 divides d_2$, and $e_1 e_2 = d_1 d_2$ forces $e_1 = d_1$, $e_2 = d_2$. Every product $d_1 d_2$ with $d_1 divides a$, $d_2 divides b$ divides $a b$, which gives the bijection.
 ]
 
-#theorem[
+#theorem(status: "S")[
   If $f: NN -> CC$ is multiplicative, then $F(n) = sum_(d divides n) f(d)$ is multiplicative.
 ] <thm-summation-mult>
 
-#proof[
+#proof(status: "S")[
   Let $(m, n) = 1$. By @lem-divisor-split, and since $(d_1, d_2) = 1$ for $d_1 divides m$, $d_2 divides n$,
   $ F(m n) = sum_(d divides m n) f(d) = sum_(d_1 divides m, space d_2 divides n) f(d_1 d_2) = sum_(d_1 divides m, space d_2 divides n) f(d_1) f(d_2) = sum_(d_1 divides m) f(d_1) sum_(d_2 divides n) f(d_2) = F(m) F(n). $
 ]
 
-#theorem[
+#theorem(status: "S")[
   For every $n in NN$, $phi^+ (n) = sum_(d divides n) phi(d) = n$.
 ] <thm-phi-sum>
 
-#proof[
+#proof(status: "C")[
   For $n = 1$ both sides equal $1$. For a prime power $n = p^alpha$ with $alpha >= 1$,
   $ F(p^alpha) = sum_(d divides p^alpha) phi(d) = sum_(i = 0)^alpha phi(p^i) = 1 + (p - 1) + (p^2 - p) + dots.c + (p^alpha - p^(alpha - 1)) = p^alpha. $
   For $n = p_1^(alpha_1) dots.c p_r^(alpha_r)$, $F$ is multiplicative by @thm-summation-mult, so $F(n) = F(p_1^(alpha_1)) dots.c F(p_r^(alpha_r)) = p_1^(alpha_1) dots.c p_r^(alpha_r) = n$.
 ]
 
-#definition(title: [Möbius function])[
+#definition(status: "S", title: [Möbius function])[
   The _Möbius function_ is
   $ mu(n) = cases(1 & "if" n = 1, (-1)^r & "if" n = p_1 dots.c p_r "with distinct primes" p_i, 0 & "otherwise".) $
   So $mu(n) != 0$ if and only if $n$ is square-free. For example, $mu(10) = (-1)^2 = 1$.
 ]
 
-#proposition[
+#proposition(status: "S")[
   The function $mu$ is multiplicative, and
   $ mu^+ (n) = sum_(d divides n) mu(d) = cases(1 & "if" n = 1, 0 & "otherwise".) $
 ] <prop-mu>
 
-#proof[
+#proof(status: "S+")[
   Let $(m, n) = 1$. If $m$ or $n$ is not square-free, neither is $m n$, and both sides of $mu(m n) = mu(m) mu(n)$ vanish. Otherwise $m$ and $n$ are products of $r$ and $s$ distinct primes, the primes of $m$ and $n$ are distinct, and $mu(m n) = (-1)^(r + s) = mu(m) mu(n)$.
 
   For $n = 1$, $mu^+ (1) = mu(1) = 1$. For $n = p^alpha$ with $alpha >= 1$, $mu^+ (p^alpha) = mu(1) + mu(p) + dots.c + mu(p^alpha) = 1 + (-1) = 0$. For $n = p_1^(alpha_1) dots.c p_r^(alpha_r)$ with $r >= 1$, $mu^+$ is multiplicative by @thm-summation-mult, so $mu^+ (n) = mu^+ (p_1^(alpha_1)) dots.c mu^+ (p_r^(alpha_r)) = 0$.
 ]
 
-#theorem(title: [Möbius inversion formula])[
+#theorem(status: "S", title: [Möbius inversion formula])[
   Let $f, F: NN -> CC$ be arithmetic functions with $F(n) = sum_(d divides n) f(d)$ for every $n in NN$. Then $f(n) = sum_(d divides n) mu(d) F(n slash d)$ for every $n in NN$.
 ] <thm-mobius>
 
-#proof[
+#proof(status: "S")[
   The pairs $(d, c)$ of positive integers with $d divides n$ and $c divides n slash d$ are exactly those with $c d divides n$, that is, with $c divides n$ and $d divides n slash c$. Hence, using @prop-mu,
   $ sum_(d divides n) mu(d) F(n / d) = sum_(d divides n) mu(d) sum_(c divides n slash d) f(c) = sum_(c divides n) f(c) sum_(d divides n slash c) mu(d) = f(n), $
   since the inner sum is $1$ for $c = n$ and $0$ otherwise.
 ]
 
-#theorem[
+#theorem(status: "C")[
   Let $f, F: NN -> CC$ with $F(n) = sum_(d divides n) f(d)$ for every $n$. If $F$ is multiplicative, then $f$ is multiplicative.
 ]
 
-#proof[
+#proof(status: "C")[
   Let $(m, n) = 1$. By @thm-mobius and @lem-divisor-split, writing $d = d_1 d_2$ with $d_1 divides m$, $d_2 divides n$,
   $ f(m n) = sum_(d divides m n) mu(d) F((m n) / d) = sum_(d_1 divides m, space d_2 divides n) mu(d_1 d_2) F(m / d_1 dot n / d_2) \
     = sum_(d_1 divides m) mu(d_1) F(m / d_1) sum_(d_2 divides n) mu(d_2) F(n / d_2) = f(m) f(n). $
@@ -139,11 +139,11 @@
 ]
 
 // [p3]
-#example[
+#example(status: "S")[
   Let $F(n) = n$. Compute $f$ with $F = f^+$.
 ]
 
-#solution[
+#solution(status: "S")[
   By @thm-phi-sum, $F = phi^+$, so @thm-mobius gives
   $ phi(n) = sum_(d divides n) mu(d) F(n / d) = n sum_(d divides n) mu(d) / d. $
   Both $F$ and $phi$ are multiplicative. For $n = p_1^(alpha_1) dots.c p_r^(alpha_r)$, only square-free $d$ contribute, that is, products of distinct $p_i$, so

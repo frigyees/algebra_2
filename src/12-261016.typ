@@ -29,29 +29,29 @@
 //   [p4] C: simplicity of A_n
 
 // [p1]
-#lemma[
+#lemma(status: "S")[
   Let $t in NN$. If $2^t + 1$ is prime, then $t$ is a power of $2$.
 ] <lem-fermat>
 
-#proof[
+#proof(status: "S+")[
   If $t$ is odd, then $2 equiv -1 pmod(3)$ gives $2^t equiv (-1)^t = -1 pmod(3)$, so $3 divides 2^t + 1$; as $2^t + 1$ is prime, $2^t + 1 = 3$ and $t = 1 = 2^0$. In general write $t = 2^k r$ with $k >= 0$ and $r$ odd. Then
   $ 2^t + 1 = (2^(2^k))^r + 1 equiv (-1)^r + 1 = 0 pmod(2^(2^k) + 1), $
   so $2^(2^k) + 1$ divides the prime $2^t + 1$. Since $2^(2^k) + 1 > 1$, it equals $2^t + 1$, so $r = 1$ and $t = 2^k$.
 ]
 
-#definition(title: [Fermat numbers])[
+#definition(status: "S", title: [Fermat numbers])[
   The _Fermat numbers_ are $F_n = 2^(2^n) + 1$, $n >= 0$. A prime of this form is a _Fermat prime_. The first five, $F_0 = 3$, $F_1 = 5$, $F_2 = 17$, $F_3 = 257$, $F_4 = 65537$, are prime.
 ]
 
-#definition[
+#definition(status: "A")[
   Let $n >= 3$. The regular $n$-gon is _constructible_ by ruler and compass if the point $(cos(2 pi slash n), sin(2 pi slash n))$ is constructible from $P_0 = {(0, 0), (1, 0)}$.
 ]
 
-#theorem(title: [Regular $n$-gon])[
+#theorem(status: "C", title: [Regular $n$-gon])[
   Let $n >= 3$. The regular $n$-gon is constructible by ruler and compass if and only if $n = 2^k p_1 dots.c p_r$ with $k, r >= 0$ and $p_1, dots, p_r$ pairwise distinct Fermat primes.
 ] <thm-ngon>
 
-#proof[
+#proof(status: "C")[
   We prove necessity; sufficiency is cited below. Suppose the regular $n$-gon is constructible. Then $c = cos(2 pi slash n)$ is a coordinate of a constructible point, so $[QQ(c) : QQ]$ is a power of $2$ by @thm-constr-deg. Let $s = sin(2 pi slash n)$ and $epsilon_n = c + i s = zeta_n$. Since
   $ (i s)^2 = -s^2 = c^2 - 1 in QQ(c), $
   the degree $[QQ(c)(i s) : QQ(c)]$ is $1$ or $2$, so $[QQ(c, i s) : QQ]$ is a power of $2$. As $epsilon_n in QQ(c, i s)$, the tower law and @thm-phi-irred show that $phi(n) = [QQ(epsilon_n) : QQ]$ divides a power of $2$, so $phi(n) = 2^m$ for some $m$.
@@ -62,26 +62,26 @@
   As the $p_i$ are odd, $alpha_i = 1$ and $p_i - 1 = 2^(beta_i)$ for every $i$. By @lem-fermat each $p_i = 2^(beta_i) + 1$ is a Fermat prime.
 ]
 
-#theorem(title: [Gauss], cited: true)[
+#theorem(status: "A", title: [Gauss], cited: true)[
   If $n = 2^k p_1 dots.c p_r$ with pairwise distinct Fermat primes $p_i$, then the regular $n$-gon is constructible.
 ]
 
 = Worked exercises on Galois groups
 
-#remark(title: [Recall])[
+#remark(status: "A", title: [Recall])[
   _Schönemann--Eisenstein criterion._ Let $f = a_n x^n + dots.c + a_0 in ZZ[x]$ and $p$ a prime with $p divides.not a_n$, $p divides a_i$ for $i < n$ and $p^2 divides.not a_0$. Then $f$ is irreducible over $QQ$.
 ] <rem-eisenstein>
 
-#example[
+#example(status: "S")[
   Determine $G = Gal(QQ(root(4, 2), i) | QQ)$.
 ]
 
-#solution[
+#solution(status: "C")[
   Let $a = root(4, 2) > 0$. Over $CC$,
   $ x^4 - 2 = (x^2 + sqrt(2))(x^2 - sqrt(2)) = (x - a)(x + a)(x - i a)(x + i a), $
   so $E = QQ(a, i)$ is the splitting field of $x^4 - 2$, and $E | QQ$ is normal by @thm-normal-split and Galois since $"char" QQ = 0$. By @rem-eisenstein with $p = 2$, $x^4 - 2$ is irreducible over $QQ$, so $[QQ(a) : QQ] = 4$. Since $i in.not QQ(a) subset.eq RR$, $[E : QQ(a)] = 2$, and $|G| = [E : QQ] = 8$ by @prop-gal-order. By the tower law $[E : QQ(i)] = 4$, so $x^4 - 2$ is the minimal polynomial of $a$ over $QQ(i)$.
 
-  Let $tau$ be complex conjugation restricted to $E$; it maps $E$ onto $E$ by @prop-normal-crit, so $tau in G$, with $tau(a) = a$, $tau(i) = -i$. By @lem-extend, the $QQ(i)$-embedding $QQ(i)(a) -> CC$ with $a mapsto i a$ exists, and it maps $E$ onto $E$ by @prop-normal-crit; call it $sigma$. So $sigma(a) = i a$, $sigma(i) = i$, and
+  Let $tau$ be complex conjugation restricted to $E$; it maps $E$ onto $E$ by @prop-normal-crit, so $tau in G$, with $tau(a) = a$, $tau(i) = -i$. Since $x^4 - 2$ is the minimal polynomial of $a$ over $QQ(i)$ and $i a$ is a root of it, $g(a) mapsto g(i a)$ for $g in QQ(i)[x]$ defines a $QQ(i)$-embedding $E = QQ(i)(a) -> CC$, as in the proof of @thm-embed-count. It maps $E$ onto $E$ by @prop-normal-crit; call it $sigma$. So $sigma(a) = i a$, $sigma(i) = i$, and
   // [p2]
   $ sigma^2 (a) = sigma(i a) = -a, quad sigma^3 (a) = sigma(-a) = -i a, quad sigma^4 (a) = a. $
   Hence $sigma$ has order $4$, $tau$ has order $2$, and the eight elements $1, sigma, sigma^2, sigma^3, tau, sigma tau, sigma^2 tau, sigma^3 tau$ are pairwise distinct, since they differ on $a$ or on $i$. So
@@ -89,11 +89,11 @@
   Checking on the generators, $tau^(-1) sigma tau (a) = tau sigma(a) = tau(i a) = -i a = sigma^3 (a)$ and $tau^(-1) sigma tau (i) = i = sigma^3 (i)$, so $tau^(-1) sigma tau = sigma^3 = sigma^(-1)$. Therefore $G tilde.equiv D_4 = chevron.l sigma, tau mid(|) sigma^4 = tau^2 = 1, tau sigma tau = sigma^(-1) chevron.r$, the dihedral group of order $8$.
 ]
 
-#example[
+#example(status: "S")[
   Determine $G = Gal(QQ(sqrt(2 + sqrt(2))) | QQ)$.
 ]
 
-#solution[
+#solution(status: "S+")[
   Let $alpha = sqrt(2 + sqrt(2))$. Then
   $ alpha^2 = 2 + sqrt(2) <==> alpha^2 - 2 = sqrt(2) ==> (alpha^2 - 2)^2 = 2 <==> alpha^4 - 4 alpha^2 + 2 = 0. $
   By @rem-eisenstein with $p = 2$, $x^4 - 4 x^2 + 2$ is irreducible, so $m_(alpha, QQ) = x^4 - 4 x^2 + 2$ and $[QQ(alpha) : QQ] = 4$. Its roots are $plus.minus sqrt(2 plus.minus sqrt(2))$. Let $beta = sqrt(2 - sqrt(2))$; since $alpha beta = sqrt(4 - 2) = sqrt(2)$, we get $beta = sqrt(2) slash alpha = (alpha^2 - 2) slash alpha in QQ(alpha)$. So all roots lie in $QQ(alpha)$, which is their splitting field; $QQ(alpha) | QQ$ is normal and separable, hence Galois, and $|G| = 4$.
@@ -106,11 +106,11 @@
   Hence $sigma^2 != "id"$, $sigma$ has order $4$, and $G = chevron.l sigma chevron.r tilde.equiv ZZ_4$.
 ]
 
-#example[
+#example(status: "S")[
   Determine the Galois groups of $x^3 + 2$ and $x^4 - 7 x^2 + 10$ over $QQ$.
 ]
 
-#solution[
+#solution(status: "C")[
   _$x^3 + 2$._ Since $x^3 + 2 = x^3 + (root(3, 2))^3 = (x + root(3, 2))(x^2 - root(3, 2) x + root(3, 4))$, the roots are
   $ x_1 = -root(3, 2), quad x_2 = root(3, 2) / 2 + (i sqrt(3) root(3, 2)) / 2, quad x_3 = root(3, 2) / 2 - (i sqrt(3) root(3, 2)) / 2. $
   The splitting field is $E = QQ(root(3, 2), i sqrt(3))$. By @rem-eisenstein with $p = 2$, $x^3 + 2$ is irreducible, so $[QQ(root(3, 2)) : QQ] = 3$, and $i sqrt(3) in.not QQ(root(3, 2)) subset.eq RR$ gives $[E : QQ] = 6 = |G|$ by @prop-gal-order. Each $sigma in G$ permutes ${x_1, x_2, x_3}$ by @thm-perm-roots and is determined by this permutation, since $E$ is generated by the roots. This gives an injective homomorphism $G -> S_3$, and as $|S_3| = 3! = 6 = |G|$, $G tilde.equiv S_3$.
@@ -121,25 +121,25 @@
   Each satisfies $sigma^2 = tau^2 = (sigma tau)^2 = "id"$, so $G = {"id", sigma, tau, sigma tau} tilde.equiv ZZ_2 times ZZ_2$, the Klein four-group.
 ]
 
-#definition(title: [Galois group of a polynomial])[
+#definition(status: "I", title: [Galois group of a polynomial])[
   Let $F$ be a field and $f in F[x]$ nonconstant. The _Galois group of $f$ over $F$_ is $Gal(E | F)$, where $E$ is a splitting field of $f$ over $F$.
 ]
 
-#example[
+#example(status: "S")[
   Let $F$ be a field, $f in F[x]$ and $c in F$. Show that the Galois groups of $f(x)$ and $f(x + c)$ over $F$ are isomorphic.
 ]
 
-#solution[
+#solution(status: "C")[
   Let $alpha_1, dots, alpha_n$ be the roots of $f$ in an algebraic closure $overline(F)$. Then $f(beta + c) = 0$ if and only if $beta + c = alpha_i$ for some $i$, so the roots of $f(x + c)$ are $alpha_1 - c, dots, alpha_n - c$. Their splitting fields in $overline(F)$ are
   $ L = F(alpha_1, dots, alpha_n), quad L' = F(alpha_1 - c, dots, alpha_n - c), $
   and $L = L'$, since $c in F$. So both Galois groups equal $Gal(L | F)$.
 ]
 
-#example[
+#example(status: "S")[
   Let $F$ be a finite field with $"char" F = p$ and $|F| = p^n$. Show that $F | FF_p$ is a Galois extension whose Galois group is generated by the Frobenius automorphism $sigma(x) = x^p$.
 ]
 
-#solution[
+#solution(status: "S+")[
   Let $f(x) = x^(p^n) - x$. Then $f'(x) = p^n x^(p^n - 1) - 1 = -1$, so $f$ is separable by @prop-sep-gcd. By @thm-finite-field every element of $F$ is a root of $f$, and $f$ has at most $p^n$ roots, so $F$ is exactly the set of roots of $f$ and is a splitting field of $f$ over $FF_p$. Hence $F | FF_p$ is normal (@thm-normal-split) and separable (@thm-finite-sep), so it is a Galois extension.
 
   // [p3-p4]
@@ -147,25 +147,25 @@
 ]
 
 // [p4]
-#remark(title: [Recall])[
+#remark(status: "A", title: [Recall])[
   For angles, measured in degrees: an angle $alpha$ is _constructible_ if $(cos alpha, sin alpha)$ is constructible from $P_0 = {(0, 0), (1, 0)}$. Sums and differences of constructible angles are constructible, and so is half of a constructible angle.
 ]
 
-#example[
+#example(status: "S")[
   For which $n in NN$ is the angle $n degree$ constructible?
 ]
 
-#solution[
+#solution(status: "S+")[
   We show that $n degree$ is constructible if and only if $3 divides n$. By @thm-ngon the regular $5$-gon is constructible, $5$ being a Fermat prime, so $72 degree$ is constructible. The angle $60 degree$ is constructible, hence so are $12 degree = 72 degree - 60 degree$, $3 degree$ (bisecting twice) and every multiple $3 k degree$.
 
   Conversely, if $(3 k + 1) degree$ were constructible, so would be $1 degree = (3 k + 1) degree - 3 k degree$. If $(3 k + 2) degree$ were constructible, so would be $1 degree = 3 (k + 1) degree - (3 k + 2) degree$. Then $20 degree$, a sum of twenty copies of $1 degree$, would be constructible, and the angle $60 degree$ could be trisected, contradicting the trisection theorem of Section 21.
 ]
 
-#example[
+#example(status: "S")[
   #missing[p4][statement of the exercise not recorded; the solution concerns an isosceles triangle with legs $a$, base $2 b$, height $f_a$ and inscribed circle of radius $r$]
 ]
 
-#solution[
+#solution(status: "C")[
   #figure(
     box(width: 5cm, height: 4.2cm, {
       let A = (2.5cm, 0.2cm)
@@ -193,62 +193,62 @@
   $ b^2 (a - b) = r^2 (a + b) <==> b^3 - a b^2 + r^2 a + r^2 b = 0. $
   With $r = 1$, $b$ is a root of $f(x) = x^3 - a x^2 + x + a$.
 
-  Whether $f$ is irreducible over $QQ$ depends on $a$: for $a = 10 slash 3$, $f(2) = 8 - 40 slash 3 + 2 + 10 slash 3 = 0$. Take $a = 5$. Then $f(x) = x^3 - 5 x^2 + x + 5$ has no rational root, since $f(1) = 2$, $f(-1) = -2$, $f(5) = 10$, $f(-5) = -150$, so it is irreducible over $QQ$. It has roots in $(1, 2)$ and $(4, 5)$, since $f(1) = 2 > 0 > -5 = f(2)$ and $f(4) = -7 < 0 < 10 = f(5)$; each gives an isosceles triangle with leg $5$ and inradius $1$. For both, $[QQ(b) : QQ] = 3$, which is not a power of $2$, so $b$ is not constructible from the data $a = 5$, $r = 1$ by @thm-constr-deg.
+  Whether $f$ is irreducible over $QQ$ depends on $a$: for $a = 10 slash 3$, $f(2) = 8 - 40 slash 3 + 2 + 10 slash 3 = 0$. Take $a = 5$. Then $f(x) = x^3 - 5 x^2 + x + 5$ has no rational root, since $f(1) = 2$, $f(-1) = -2$, $f(5) = 10$, $f(-5) = -250$, so it is irreducible over $QQ$. It has roots in $(1, 2)$ and $(4, 5)$, since $f(1) = 2 > 0 > -5 = f(2)$ and $f(4) = -7 < 0 < 10 = f(5)$; each gives an isosceles triangle with leg $5$ and inradius $1$. For both, $[QQ(b) : QQ] = 3$, which is not a power of $2$, so $b$ is not constructible from the data $a = 5$, $r = 1$ by @thm-constr-deg.
 ]
 
 = Solvable groups
 
-#remark(title: [Recall])[
+#remark(status: "I", title: [Recall])[
   For a group $G$, the _commutator subgroup_ $G' = chevron.l g^(-1) h^(-1) g h : g, h in G chevron.r$ is a normal subgroup of $G$. For $N lt.closed.eq G$, the quotient $G slash N$ is abelian if and only if $G' <= N$. If $phi: G -> H$ is a surjective homomorphism, then $phi(G') = H'$.
 ]
 
-#definition(title: [Derived series, solvable group])[
+#definition(status: "S", title: [Derived series, solvable group])[
   The _derived series_ (commutator series) of a group $G$ is $G^((0)) = G$, $G^((n + 1)) = (G^((n)))'$ for $n >= 0$. The group $G$ is _solvable_ if $G^((k)) = 1$ for some $k in NN$.
 ]
 
-#definition(title: [Normal series])[
+#definition(status: "S", title: [Normal series])[
   A _normal series_ of $G$ is a chain $1 = H_0 lt.closed.eq H_1 lt.closed.eq dots.c lt.closed.eq H_n = G$ of subgroups, each normal in the next. Its _factors_ are the groups $H_(i + 1) slash H_i$.
 ]
 
-#proposition[
+#proposition(status: "S")[
   A group $G$ is solvable if and only if it has a normal series with abelian factors.
 ] <prop-solv-series>
 
-#proof[
+#proof(status: "B")[
   $(arrow.r.double)$ If $G^((k)) = 1$, then $1 = G^((k)) lt.closed.eq G^((k - 1)) lt.closed.eq dots.c lt.closed.eq G^((0)) = G$, and $G^((i)) slash G^((i + 1)) = G^((i)) slash (G^((i)))'$ is abelian.
 
   $(arrow.l.double)$ Let $1 = H_0 lt.closed.eq dots.c lt.closed.eq H_n = G$ have abelian factors. We show $G^((i)) <= H_(n - i)$ by induction on $i$. For $i = 0$ this is $G = H_n$. If $G^((i)) <= H_(n - i)$, then $G^((i + 1)) = (G^((i)))' <= (H_(n - i))' <= H_(n - i - 1)$, the last inclusion because $H_(n - i) slash H_(n - i - 1)$ is abelian. For $i = n$ we get $G^((n)) <= H_0 = 1$.
 ]
 
-#proposition[
+#proposition(status: "S")[
   If $G$ and $H$ are solvable groups, then so is $G times H$.
 ]
 
-#proof[
+#proof(status: "B")[
   Commutators in $G times H$ are formed componentwise, so $(G times H)' = G' times H'$, and by induction $(G times H)^((i)) = G^((i)) times H^((i))$. If $G^((k)) = 1$ and $H^((l)) = 1$, then $(G times H)^((max(k, l))) = 1$.
 ]
 
-#proposition[
+#proposition(status: "S")[
   A finite group $G$ is solvable if and only if it has a normal series whose factors are cyclic.
 ] <prop-solv-cyclic>
 
-#proof[
+#proof(status: "B")[
   Cyclic groups are abelian, so one direction is @prop-solv-series. Conversely, take a normal series with abelian factors. It suffices to refine each step $H_i lt.closed.eq H_(i + 1)$ with $A = H_(i + 1) slash H_i$ finite abelian. By induction on $|A|$, $A$ has a chain $1 = A_0 <= A_1 <= dots.c <= A_s = A$ with cyclic factors: for $A != 1$ choose $1 != g in A$, put $A_1 = chevron.l g chevron.r$, and lift a chain of $A slash A_1$, which is smaller. Every subgroup of the abelian group $A$ is normal in it, and the preimages of the $A_j$ in $H_(i + 1)$ form a chain from $H_i$ to $H_(i + 1)$, each normal in the next, with factors $A_(j + 1) slash A_j$.
 ]
 
-#definition(title: [Alternating group])[
+#definition(status: "S", title: [Alternating group])[
   $A_n$ is the group of even permutations of ${1, dots, n}$; $|A_n| = n! slash 2$ for $n >= 2$. A group is _simple_ if its only normal subgroups are $1$ and itself.
 ]
 
-#theorem(cited: true)[
+#theorem(status: "C", cited: true)[
   $A_n$ is simple for $n >= 5$.
 ]
 
-#theorem[
+#theorem(status: "S")[
   $S_n$ is solvable if and only if $n <= 4$.
 ] <thm-sn-solvable>
 
-#proof[
+#proof(status: "B")[
   $S_1$ and $S_2$ are abelian. $1 lt.closed.eq A_3 lt.closed.eq S_3$ has factors of orders $3$ and $2$. For $S_4$, let $V = {"id", (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)}$, which is normal in $S_4$, being the union of $"id"$ and a conjugacy class. Then $1 lt.closed.eq V lt.closed.eq A_4 lt.closed.eq S_4$ has factors $V tilde.equiv ZZ_2 times ZZ_2$, $A_4 slash V$ of order $3$, and $S_4 slash A_4$ of order $2$, all abelian. By @prop-solv-series these groups are solvable.
 
   Let $n >= 5$. Since $(1 2 3)(3 4 5) != (3 4 5)(1 2 3)$, $A_n$ is not abelian, so $A_n' != 1$. As $A_n'$ is normal in the simple group $A_n$, $A_n' = A_n$, and the derived series of $A_n$ is constant. Since $A_n <= S_n$, induction gives $A_n = A_n^((i)) <= S_n^((i))$ for every $i$, so the derived series of $S_n$ never reaches $1$, and $S_n$ is not solvable.

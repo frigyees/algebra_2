@@ -24,11 +24,11 @@
 //   [p2] A: ex. 6: F multiplicative via Theorem 7.7, case 2 | n made explicit
 
 // [p1]
-#example[
+#example(status: "S")[
   Is $f(x) = x^5 - 2 x^3 - 8 x + 2 in QQ[x]$ solvable by radicals?
 ]
 
-#solution[
+#solution(status: "S+")[
   No. By @rem-eisenstein with $p = 2$, $f$ is irreducible over $QQ$. We have
   $ f'(x) = 5 x^4 - 6 x^2 - 8 = (x^2 - 2)(5 x^2 + 4), $
   whose real zeros are $plus.minus sqrt(2)$. By Rolle's theorem $f$ has at most $3$ real zeros. From
@@ -44,11 +44,11 @@
 
 = Review exercises
 
-#example[
+#example(status: "S")[
   Solve $x^3 - 2 x^2 + 3 x + 2 equiv 0 pmod(25)$.
 ]
 
-#solution[
+#solution(status: "S+")[
   Let $f(x) = x^3 - 2 x^2 + 3 x + 2$. Modulo $5$, the values $f(0), dots, f(4)$ are $2, 4, 3, 0, 1$, so $x equiv 3 pmod(5)$ is the only solution. Since $f'(x) = 3 x^2 - 4 x + 3$ and $f'(3) = 27 - 12 + 3 = 18 equiv.not 0 pmod(5)$, @thm-hensel gives exactly one solution modulo $25$.
 
   Write $x = 5 t + 3$. Expanding and dropping the terms divisible by $25$,
@@ -58,11 +58,11 @@
   Indeed $f(13) = 1900 = 76 dot 25$.
 ]
 
-#example[
+#example(status: "S")[
   Let $p > 3$ be a prime. Compute $ls(3, p)$.
 ]
 
-#solution[
+#solution(status: "S")[
   Since $p != 2, 3$, the symbol is defined and @thm-qr applies with $3 equiv -1 pmod(4)$. We use @prop-legendre 1) and $ls(1, 3) = 1$, $ls(2, 3) = -1$.
 
   _Case I: $p equiv -1 pmod(4)$._ By @thm-qr,
@@ -81,11 +81,11 @@
 ]
 
 // [p2]
-#example[
+#example(status: "S")[
   Prove that the field extension $QQ subset.eq QQ(sqrt(3), sqrt(5))$ is Galois and determine its Galois group.
 ]
 
-#solution[
+#solution(status: "C")[
   We need that $QQ(sqrt(3), sqrt(5)) | QQ$ is normal and separable. It is separable since $"char" QQ = 0$ (@lem-sep-deriv). The minimal polynomials are $m_(sqrt(3)) (x) = x^2 - 3$ and $m_(sqrt(5)) (x) = x^2 - 5$, and
   $ (x^2 - 3)(x^2 - 5) = (x - sqrt(3))(x + sqrt(3))(x - sqrt(5))(x + sqrt(5)), $
   so $QQ(sqrt(3), sqrt(5))$ is the splitting field of $(x^2 - 3)(x^2 - 5)$, hence normal (@thm-normal-split), and the extension is Galois.
@@ -98,11 +98,11 @@
   Then $(alpha beta)(sqrt(3)) = -sqrt(3) = gamma(sqrt(3))$ and $(alpha beta)(sqrt(5)) = -sqrt(5) = gamma(sqrt(5))$, so $alpha beta = gamma$. Likewise $(alpha gamma)(sqrt(3)) = sqrt(3)$, $(alpha gamma)(sqrt(5)) = -sqrt(5)$, so $alpha gamma = beta$, and similarly $gamma beta = alpha$. Every element has order at most $2$, so $G tilde.equiv ZZ_2 times ZZ_2$, the Klein four-group.
 ]
 
-#example[
+#example(status: "S")[
   Find the smallest positive primitive root modulo $13$. Make an index table and solve $3 x^7 equiv 8 pmod(13)$.
 ]
 
-#solution[
+#solution(status: "C")[
   $phi(13) = 12$, so $ord(13, 2) divides 12$ by @prop-order, that is, $ord(13, 2) in {1, 2, 3, 4, 6, 12}$. By @proc-prim it suffices to check $2^(12 slash 2) = 2^6$ and $2^(12 slash 3) = 2^4$: $2^4 = 16 equiv 3$ and $2^6 = 64 equiv -1 pmod(13)$. Hence $ord(13, 2) = 12$, and $2$ is a primitive root modulo $13$. Since $ord(13, 1) = 1$, $2$ is the smallest positive primitive root. The powers of $2$ modulo $13$ are:
   #align(center, table(
     columns: 14,
@@ -115,13 +115,13 @@
   Put $y = ind_2 x$ and multiply by $5$: $35 y equiv -5 pmod(12)$. Since $35 equiv -1 pmod(12)$, $-y equiv -5$ and $y equiv 5 pmod(12)$. Hence $x equiv 2^5 = 32 equiv 6 pmod(13)$. Indeed $6^7 equiv 7 pmod(13)$ and $3 dot 7 = 21 equiv 8 pmod(13)$.
 ]
 
-#example[
+#example(status: "S")[
   For $n = p_1^(alpha_1) p_2^(alpha_2) dots.c p_r^(alpha_r)$, define the arithmetic function
   $ f(n) = cases((-1)^(p_1 + p_2 + dots.c + p_r) & "if" n > 1, 1 & "if" n = 1.) $
   Prove that $f$ is multiplicative and determine its summation function.
 ]
 
-#solution[
+#solution(status: "C")[
   Here the $p_i$ are distinct primes and $alpha_i >= 1$. Let $F(n) = sum_(d divides n) f(d)$ be the summation function.
 
   _$f$ is multiplicative._ Let $m = q_1^(beta_1) dots.c q_s^(beta_s)$ with distinct primes $q_j$, and $gcd(n, m) = 1$, so $p_i != q_j$ for all $i, j$. Then the distinct prime divisors of $m n$ are the $p_i$ and the $q_j$, and

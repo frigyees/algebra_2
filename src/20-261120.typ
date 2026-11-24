@@ -7,7 +7,7 @@
 // NOTATION (normalized)
 //   Ker, Im -> ker, im; "pl." examples -> Example blocks; R-mod. -> R-module; maps of the splitting proof renamed (f: F -> P -> p)
 // DROPPED
-//   [p1] first line "Z (x)_Z Q = {0}": false (Example 29.26: Z (x) Q = Q); no context on the page
+//   [p1] first line "Z (x)_Z Q = {0}": false (Example 29.25: Z (x) Q = Q); no context on the page
 //   [p2] crossed-out first attempt of the Q (x) Q computation
 // CORRECTIONS
 //   [p2] im(1 (x) f) in ker(1 (x) g): (1 (x) f) o (1 (x) g) = 1 (x) (fg) -> (1 (x) g) o (1 (x) f) = 1 (x) (g o f)
@@ -19,26 +19,26 @@
 //   [p3] A: projective definition: exact bottom row means g surjective
 //   [p4] A: free => projective: h well defined since X is a basis; choice of the a_x
 //   [p4] A: 1 => 2 splitting via the short five lemma (the source asserts B = A (+) P from the section h)
-//   [p4] A: 2 => 3: P is a quotient of a free module, proved via Proposition 29.15
+//   [p4] A: 2 => 3: P is a quotient of a free module, proved via Proposition 29.14
 //   [p5] A: 3 => 1: inclusion i and projection pi made explicit
 //   FIGURES diagrams redrawn with lib/diagram.typ
 
 // [p1]
-#example[
+#example(status: "S")[
   Show that $QQ slash ZZ times.o_ZZ QQ slash ZZ = {0}$.
 ]
 
-#solution[
+#solution(status: "S+")[
   Let $x in QQ slash ZZ$. Then there is $u in ZZ$, $u > 0$, with $u x = 0$: if $x = [a slash b]$ with $b > 0$, take $u = b$. Let $y = [q] in QQ slash ZZ$ be arbitrary and put $y slash u = [q slash u]$, so that $u (y slash u) = y$. Then
   $ x times.o y = x times.o (u dot y / u) = u (x times.o y / u) = (u x) times.o y / u = 0 times.o y / u = 0. $
   Since the elements $x times.o y$ generate the tensor product (@prop-tensor-rules), $QQ slash ZZ times.o_ZZ QQ slash ZZ = {0}$.
 ]
 
-#example[
+#example(status: "S")[
   Show that $ZZ slash 5 ZZ times.o_ZZ ZZ slash 7 ZZ = {0}$.
 ]
 
-#solution[
+#solution(status: "S+")[
   Let $m in ZZ slash 5 ZZ$ and $u in ZZ slash 7 ZZ$. Then
   $ m times.o 5 u = 5 (m times.o u) = (5 m) times.o u = 0 times.o u = 0, $
   $ 2 m times.o u = 7 m times.o u = 7 (m times.o u) = m times.o 7 u = 0, $
@@ -47,11 +47,11 @@
   Equivalently, $1 = 3 dot 5 - 2 dot 7$ gives $m times.o u = 3 (5 m times.o u) - 2 (m times.o 7 u) = 0$. So all generators vanish, and $ZZ slash 5 ZZ times.o ZZ slash 7 ZZ = {0}$.
 ]
 
-#example[
+#example(status: "S")[
   Determine $QQ times.o_ZZ QQ$.
 ]
 
-#solution[
+#solution(status: "S+")[
   Let $x in QQ$ and $a slash b in QQ$ with $a, b in ZZ$, $b != 0$. Then
   $ x times.o a / b = (x / b dot b) times.o a / b = b (x / b times.o a / b) = x / b times.o (b dot a / b) = x / b times.o a = x / b times.o a dot 1 = (a dot x / b) times.o 1 = (a x) / b times.o 1. $
   // [p2]
@@ -64,13 +64,13 @@
 
 == Tensor product and exactness
 
-#remark(title: [Recall])[
+#remark(status: "S", title: [Recall])[
   Let $M$ be an $R$-module and $N ar(f) N' ar(g) N''$ $R$-morphisms. Tensoring with $M$ gives
   $ M times.o N ar(1_M times.o f) M times.o N' ar(1_M times.o g) M times.o N'', $
   and $(1_M times.o g) compose (1_M times.o f) = 1_M times.o (g compose f)$ by @cor-tensor-comp. Moreover $1_M times.o 1_N = 1_(M times.o N)$.
 ]
 
-#theorem(title: [Right exactness of the tensor product])[
+#theorem(status: "S", title: [Right exactness of the tensor product])[
   Let $N', N, N''$ be $R$-modules. If
   $ N' ar(f) N ar(g) N'' ar(#none) 0 $
   is exact, then
@@ -78,7 +78,7 @@
   is exact for every $R$-module $M$.
 ] <thm-right-exact>
 
-#proof[
+#proof(status: "S+")[
   We have to show that $1_M times.o g$ is surjective and that $im(1_M times.o f) = ker(1_M times.o g)$.
 
   _$1_M times.o g$ is surjective._ Its image is a submodule, so it suffices to show that every generator $m times.o u''$ of $M times.o N''$ has a preimage. Since $g$ is surjective, there is $u in N$ with $g(u) = u''$. Then $(1_M times.o g)(m times.o u) = 1_M (m) times.o g(u) = m times.o u''$.
@@ -113,7 +113,7 @@
 
 = Projective and injective modules
 
-#definition(title: [Projective module])[
+#definition(status: "S", title: [Projective module])[
   An $R$-module $P$ is _projective_ if for every diagram of $R$-modules and $R$-morphisms
   #cd(
     ((0, 1, $P$), (1, 0, $A$), (1, 1, $B$), (1, 2, $0$)),
@@ -128,36 +128,36 @@
 ] <def-projective>
 
 // [p4]
-#proposition[
+#proposition(status: "S")[
   Every free $R$-module is projective.
 ] <prop-free-proj>
 
-#proof[
+#proof(status: "S")[
   Let $F$ be free with basis $X$, and let $f: F -> B$ and $g: A -> B$ be $R$-morphisms with $g$ surjective. For $x in X$, since $g$ is surjective, there is $a_x in A$ with $g(a_x) = f(x)$; choose one for each $x$. Let $h': X -> A$, $h'(x) = a_x$. Since $X$ is a basis, every element of $F$ is uniquely of the form $sum_i c_i x_i$ with $c_i in R$ and distinct $x_i in X$, so
   $ h: F -> A, quad h(sum_i c_i x_i) = sum_i c_i h'(x_i), $
   is a well-defined $R$-morphism extending $h'$. For $x in X$, $f(x) = g(a_x) = g(h(x))$. So the $R$-morphisms $f$ and $g compose h$ agree on the basis $X$, hence on $F$.
 ]
 
-#definition(title: [Split exact sequence])[
+#definition(status: "S", title: [Split exact sequence])[
   A short exact sequence $0 ar(#none) A ar(f) B ar(g) C ar(#none) 0$ _splits_ if $B tilde.equiv A plus.o C$.
 ]
 
-#lemma[
+#lemma(status: "S")[
   Every $R$-module $P$ is the image of a free $R$-module under an $R$-morphism.
 ] <lem-free-cover>
 
-#proof[
+#proof(status: "A")[
   Let $F_P$ be the free module on the set $P$ (@def-free-on-set). By @prop-free-univ there is an $R$-morphism $p: F_P -> P$ with $p(e_x) = x$ for every $x in P$, and it is surjective.
 ]
 
-#theorem[
+#theorem(status: "S")[
   For an $R$-module $P$ the following are equivalent:
   + $P$ is projective;
   + every exact sequence $0 ar(#none) A ar(f) B ar(g) P ar(#none) 0$ splits, that is, $B tilde.equiv A plus.o P$;
   + $F tilde.equiv K plus.o P$ for some free $R$-module $F$ and some $R$-module $K$.
 ] <thm-projective>
 
-#proof[
+#proof(status: "S+")[
   1) $=>$ 2): apply the definition to $f = "id"_P$ and the surjection $g$:
   #cd(
     ((0, 1, $P$), (1, 0, $B$), (1, 1, $P$), (1, 2, $0$)),
