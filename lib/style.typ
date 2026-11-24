@@ -55,10 +55,10 @@
     breakable: true,
     {
       context [*#name #number-at(env-counter, here())*]
-      if title != none [ *(#title)*]
+      if title != none [ (#title)]
       if cited [ (cited)]
       [*.*]
-      h(0.5em)
+      [ ]
       body
     },
   ) },
@@ -99,12 +99,16 @@
     number-align: center,
     header: none,
   )
-  set text(font: "TeX Gyre Pagella", size: 11pt, lang: "en")
+  set text(font: "TeX Gyre Pagella", size: 10.5pt, lang: "en")
   show math.equation: set text(font: "New Computer Modern Math")
   set par(justify: true)
   set enum(numbering: "1)", spacing: 1em)
-  set par(leading: 0.72em, spacing: 1.4em)
+  // LaTeX paragraphs: no gap between paragraphs, first-line indent, no indent
+  // after a heading, display, list, proof or environment box (all: false).
+  set par(leading: 0.72em, spacing: 0.72em, first-line-indent: (amount: 1.5em, all: false))
   set block(spacing: 1.4em)
+  // Display math: close to \abovedisplayskip / \belowdisplayskip.
+  show math.equation.where(block: true): set block(above: 0.85em, below: 0.85em)
 
   set heading(numbering: "1.")
   show heading: set block(above: 2.2em, below: 1.1em)

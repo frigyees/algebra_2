@@ -11,9 +11,10 @@ course:
 # compile both editions
 c: full course
 
-# watch either
+# watch full edition
 wf:
     typst watch main.typ algebra_2.pdf
 
+# watch lecture content only
 wc:
     typst watch --input edition=course main.typ algebra_2_course.pdf
